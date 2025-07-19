@@ -63,7 +63,8 @@ export const DoctorSection: React.FC = () => {
       experience: 15,
       availability: 'Mon-Sat: 9:00 AM - 6:00 PM',
       consultationFee: 2000,
-      languages: ['Urdu', 'English', 'Punjabi']
+      languages: ['Urdu', 'English', 'Punjabi'],
+      image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     },
     {
       id: '2',
@@ -77,7 +78,8 @@ export const DoctorSection: React.FC = () => {
       experience: 12,
       availability: 'Mon-Fri: 10:00 AM - 8:00 PM',
       consultationFee: 3000,
-      languages: ['Urdu', 'English', 'Sindhi']
+      languages: ['Urdu', 'English', 'Sindhi'],
+      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     },
     {
       id: '3',
@@ -91,7 +93,8 @@ export const DoctorSection: React.FC = () => {
       experience: 20,
       availability: 'Mon-Sat: 8:00 AM - 4:00 PM',
       consultationFee: 4000,
-      languages: ['Urdu', 'English']
+      languages: ['Urdu', 'English'],
+      image: 'https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     },
     {
       id: '4',
@@ -105,7 +108,8 @@ export const DoctorSection: React.FC = () => {
       experience: 8,
       availability: 'Tue-Sun: 11:00 AM - 7:00 PM',
       consultationFee: 2500,
-      languages: ['Urdu', 'English', 'Punjabi']
+      languages: ['Urdu', 'English', 'Punjabi'],
+      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     },
     {
       id: '5',
@@ -119,7 +123,8 @@ export const DoctorSection: React.FC = () => {
       experience: 18,
       availability: 'Mon-Sat: 9:00 AM - 5:00 PM',
       consultationFee: 2200,
-      languages: ['Urdu', 'English', 'Pashto']
+      languages: ['Urdu', 'English', 'Pashto'],
+      image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     },
     {
       id: '6',
@@ -133,7 +138,8 @@ export const DoctorSection: React.FC = () => {
       experience: 14,
       availability: 'Mon-Fri: 2:00 PM - 9:00 PM',
       consultationFee: 3500,
-      languages: ['Urdu', 'English', 'Sindhi']
+      languages: ['Urdu', 'English', 'Sindhi'],
+      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=300&h=300'
     }
   ];
 
@@ -205,17 +211,26 @@ export const DoctorSection: React.FC = () => {
         {/* Doctors Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredDoctors.map((doctor) => (
-            <div key={doctor.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div key={doctor.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
               <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div>
+                <div className="flex items-center mb-4">
+                  <img 
+                    src={doctor.image} 
+                    alt={doctor.name}
+                    className="w-16 h-16 rounded-full object-cover mr-4 border-3 border-emerald-200"
+                  />
+                  <div className="flex-1">
                     <h3 className="text-xl font-bold text-gray-800">{doctor.name}</h3>
                     <p className="text-emerald-600 font-medium">{doctor.specialty}</p>
-                    <p className="text-gray-600 text-sm">{doctor.qualifications}</p>
+                    <div className="flex items-center space-x-1 mt-1">
+                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                      <span className="text-sm font-medium text-gray-700">{doctor.rating}</span>
+                    </div>
                   </div>
-                  <div className="flex items-center space-x-1">
-                    <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                    <span className="text-sm font-medium text-gray-700">{doctor.rating}</span>
+                </div>
+                <div className="flex items-start justify-between mb-4">
+                  <div>
+                    <p className="text-gray-600 text-sm">{doctor.qualifications}</p>
                   </div>
                 </div>
 

@@ -14,6 +14,7 @@ interface Medicine {
   contraindications: string[];
   price: string;
   manufacturer: string;
+  image: string;
 }
 
 export const MedicineSection: React.FC = () => {
@@ -33,7 +34,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Do not exceed recommended dose', 'Avoid alcohol', 'Consult doctor if pregnant'],
       contraindications: ['Liver disease', 'Alcohol dependence', 'Allergy to acetaminophen'],
       price: 'Rs. 5-15 per tablet',
-      manufacturer: 'GlaxoSmithKline / Local manufacturers'
+      manufacturer: 'GlaxoSmithKline / Local manufacturers',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     },
     {
       id: '2',
@@ -46,7 +48,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Take with food', 'Avoid in kidney disease', 'Monitor blood pressure'],
       contraindications: ['Kidney disease', 'Heart disease', 'Stomach ulcers', 'Pregnancy (3rd trimester)'],
       price: 'Rs. 8-20 per tablet',
-      manufacturer: 'Abbott / Searle'
+      manufacturer: 'Abbott / Searle',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     },
     {
       id: '3',
@@ -59,7 +62,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Complete full course', 'Take with food', 'Inform doctor of allergies'],
       contraindications: ['Penicillin allergy', 'Mononucleosis', 'Severe kidney disease'],
       price: 'Rs. 15-30 per capsule',
-      manufacturer: 'GlaxoSmithKline / Getz Pharma'
+      manufacturer: 'GlaxoSmithKline / Getz Pharma',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     },
     {
       id: '4',
@@ -72,7 +76,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Take before meals', 'Monitor for bone fractures', 'Check B12 levels'],
       contraindications: ['Severe liver disease', 'Allergy to omeprazole'],
       price: 'Rs. 25-50 per capsule',
-      manufacturer: 'Novartis / Searle'
+      manufacturer: 'Novartis / Searle',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     },
     {
       id: '5',
@@ -85,7 +90,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Take with meals', 'Monitor kidney function', 'Avoid alcohol'],
       contraindications: ['Kidney disease', 'Liver disease', 'Heart failure', 'Severe dehydration'],
       price: 'Rs. 10-25 per tablet',
-      manufacturer: 'Merck / Sanofi'
+      manufacturer: 'Merck / Sanofi',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     },
     {
       id: '6',
@@ -98,7 +104,8 @@ export const MedicineSection: React.FC = () => {
       precautions: ['Monitor blood pressure', 'Rise slowly from sitting', 'Regular check-ups'],
       contraindications: ['Severe heart failure', 'Severe liver disease', 'Allergy to amlodipine'],
       price: 'Rs. 20-40 per tablet',
-      manufacturer: 'Pfizer / Boehringer Ingelheim'
+      manufacturer: 'Pfizer / Boehringer Ingelheim',
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
     }
   ];
 
@@ -137,7 +144,20 @@ export const MedicineSection: React.FC = () => {
         {/* Medicines Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredMedicines.map((medicine) => (
-            <div key={medicine.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
+            <div key={medicine.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
+              <div className="relative h-40 overflow-hidden">
+                <img 
+                  src={medicine.image} 
+                  alt={medicine.name}
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-2 left-2">
+                  <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg">
+                    <Pill className="w-6 h-6 text-emerald-600" />
+                  </div>
+                </div>
+              </div>
               <div className="p-6">
                 <div className="flex items-start justify-between mb-4">
                   <div className="flex-1">
@@ -147,7 +167,6 @@ export const MedicineSection: React.FC = () => {
                       {medicine.type}
                     </span>
                   </div>
-                  <Pill className="w-8 h-8 text-emerald-600" />
                 </div>
 
                 <div className="mb-4">

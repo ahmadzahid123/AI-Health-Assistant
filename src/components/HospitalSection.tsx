@@ -14,6 +14,7 @@ interface Hospital {
   type: string;
   beds: number;
   established: number;
+  image: string;
 }
 
 export const HospitalSection: React.FC = () => {
@@ -45,7 +46,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.9,
       type: 'Private',
       beds: 195,
-      established: 1994
+      established: 1994,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '2',
@@ -58,7 +60,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.8,
       type: 'Private',
       beds: 720,
-      established: 1985
+      established: 1985,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '3',
@@ -71,7 +74,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.2,
       type: 'Government',
       beds: 1200,
-      established: 1985
+      established: 1985,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '4',
@@ -84,7 +88,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.6,
       type: 'Private',
       beds: 450,
-      established: 1948
+      established: 1948,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '5',
@@ -97,7 +102,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.5,
       type: 'Private',
       beds: 700,
-      established: 1958
+      established: 1958,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '6',
@@ -110,7 +116,8 @@ export const HospitalSection: React.FC = () => {
       rating: 4.3,
       type: 'Military',
       beds: 800,
-      established: 1947
+      established: 1947,
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     }
   ];
 
@@ -157,27 +164,32 @@ export const HospitalSection: React.FC = () => {
         {/* Hospitals Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredHospitals.map((hospital) => (
-            <div key={hospital.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{hospital.name}</h3>
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className={`px-2 py-1 rounded-full text-xs font-medium ${
-                        hospital.type === 'Private' ? 'bg-blue-100 text-blue-700' :
-                        hospital.type === 'Government' ? 'bg-green-100 text-green-700' :
-                        'bg-purple-100 text-purple-700'
-                      }`}>
-                        {hospital.type}
-                      </span>
-                      <div className="flex items-center space-x-1">
-                        <Star className="w-4 h-4 text-yellow-400 fill-current" />
-                        <span className="text-sm font-medium text-gray-700">{hospital.rating}</span>
-                      </div>
+            <div key={hospital.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
+              <div className="relative h-48 overflow-hidden">
+                <img 
+                  src={hospital.image} 
+                  alt={hospital.name}
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl font-bold text-white mb-1">{hospital.name}</h3>
+                  <div className="flex items-center space-x-2">
+                    <span className={`px-2 py-1 rounded-full text-xs font-medium ${
+                      hospital.type === 'Private' ? 'bg-blue-500/80 text-white' :
+                      hospital.type === 'Government' ? 'bg-green-500/80 text-white' :
+                      'bg-purple-500/80 text-white'
+                    }`}>
+                      {hospital.type}
+                    </span>
+                    <div className="flex items-center space-x-1">
+                      <Star className="w-4 h-4 text-yellow-400 fill-current" />
+                      <span className="text-sm font-medium text-white">{hospital.rating}</span>
                     </div>
                   </div>
                 </div>
-
+              </div>
+              <div className="p-6">
                 <div className="space-y-3 mb-4">
                   <div className="flex items-start space-x-2 text-sm text-gray-600">
                     <MapPin className="w-4 h-4 mt-0.5" />

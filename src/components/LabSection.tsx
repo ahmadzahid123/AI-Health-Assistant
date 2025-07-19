@@ -18,6 +18,7 @@ interface Lab {
   };
   timings: string;
   rating: number;
+  image: string;
 }
 
 export const LabSection: React.FC = () => {
@@ -54,7 +55,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 300-2000'
       },
       timings: '24/7 Collection, Reports: 8 AM - 8 PM',
-      rating: 4.7
+      rating: 4.7,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '2',
@@ -71,7 +73,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 250-1800'
       },
       timings: '24/7 Collection, Reports: 7 AM - 9 PM',
-      rating: 4.8
+      rating: 4.8,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '3',
@@ -88,7 +91,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 350-2500'
       },
       timings: '7 AM - 10 PM',
-      rating: 4.5
+      rating: 4.5,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '4',
@@ -105,7 +109,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 280-2200'
       },
       timings: '6 AM - 10 PM',
-      rating: 4.6
+      rating: 4.6,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '5',
@@ -122,7 +127,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 200-1500'
       },
       timings: '7 AM - 8 PM',
-      rating: 4.4
+      rating: 4.4,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       id: '6',
@@ -139,7 +145,8 @@ export const LabSection: React.FC = () => {
         singleTest: 'Rs. 400-3000'
       },
       timings: '24/7 Collection, Reports: 8 AM - 6 PM',
-      rating: 4.9
+      rating: 4.9,
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     }
   ];
 
@@ -186,19 +193,23 @@ export const LabSection: React.FC = () => {
         {/* Labs Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {filteredLabs.map((lab) => (
-            <div key={lab.id} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow">
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-800 mb-2">{lab.name}</h3>
-                    <div className="flex items-center space-x-2 mb-2">
-                      <span className="text-yellow-400">★</span>
-                      <span className="text-sm font-medium text-gray-700">{lab.rating}</span>
-                    </div>
+            <div key={lab.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
+              <div className="relative h-40 overflow-hidden">
+                <img 
+                  src={lab.image} 
+                  alt={lab.name}
+                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                <div className="absolute bottom-2 left-2 right-2">
+                  <h3 className="text-lg font-bold text-white mb-1">{lab.name}</h3>
+                  <div className="flex items-center space-x-2">
+                    <span className="text-yellow-400">★</span>
+                    <span className="text-sm font-medium text-white">{lab.rating}</span>
                   </div>
-                  <FlaskConical className="w-8 h-8 text-emerald-600" />
                 </div>
-
+              </div>
+              <div className="p-6">
                 <div className="space-y-2 mb-4">
                   <div className="flex items-center space-x-2 text-sm text-gray-600">
                     <MapPin className="w-4 h-4" />

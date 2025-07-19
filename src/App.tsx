@@ -11,6 +11,7 @@ import { Hero } from './components/Hero';
 import { Footer } from './components/Footer';
 import { LoadingScreen } from './components/LoadingScreen';
 import { LanguageProvider } from './contexts/LanguageContext';
+import { PWAInstallPrompt } from './components/PWAInstallPrompt';
 
 export type Section = 'home' | 'doctors' | 'hospitals' | 'medicines' | 'labs' | 'register' | 'chat';
 
@@ -49,6 +50,7 @@ function App() {
   return (
     <LanguageProvider>
       <div className="min-h-screen bg-gradient-to-br from-slate-50 via-white to-emerald-50">
+        <PWAInstallPrompt />
         <Navbar activeSection={activeSection} onNavigate={setActiveSection} />
         <main className="pt-20">
           {renderSection()}

@@ -18,7 +18,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('chat'),
       color: 'bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700',
       buttonColor: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700',
-      image: 'https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       icon: Users,
@@ -27,7 +27,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('doctors'),
       color: 'bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700',
       buttonColor: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
-      image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       icon: Building2,
@@ -36,7 +36,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('hospitals'),
       color: 'bg-gradient-to-br from-purple-100 to-pink-100 text-purple-700',
       buttonColor: 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700',
-      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       icon: Pill,
@@ -45,7 +45,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('medicines'),
       color: 'bg-gradient-to-br from-orange-100 to-red-100 text-orange-700',
       buttonColor: 'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       icon: FlaskConical,
@@ -54,7 +54,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('labs'),
       color: 'bg-gradient-to-br from-pink-100 to-rose-100 text-pink-700',
       buttonColor: 'bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700',
-      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     },
     {
       icon: UserPlus,
@@ -63,7 +63,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       action: () => onNavigate('register'),
       color: 'bg-gradient-to-br from-teal-100 to-cyan-100 text-teal-700',
       buttonColor: 'bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700',
-      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=400'
+      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
     }
   ];
 
@@ -125,7 +125,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <img 
                     src={feature.image} 
                     alt={feature.title}
-                    className="w-full h-32 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
                   <div className={`absolute bottom-2 left-2 w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center shadow-lg`}>
@@ -263,19 +263,19 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                 name: "Dr. Ahmed Hassan",
                 location: "Lahore",
                 text: "This platform has revolutionized how I connect with patients in remote areas. The AI assistant is incredibly accurate.",
-                avatar: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=100"
+                avatar: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               },
               {
                 name: "Fatima Khan",
                 location: "Karachi",
                 text: "As a mother in a remote village, this app has been a lifesaver. I can get medical advice instantly for my children.",
-                avatar: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=100"
+                avatar: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               },
               {
                 name: "Muhammad Ali",
                 location: "Islamabad",
                 text: "The multilingual support makes it accessible to everyone. Finally, healthcare technology that understands Pakistan.",
-                avatar: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=100"
+                avatar: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               }
             ].map((testimonial, index) => (
               <div key={index} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
@@ -283,7 +283,7 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
                   <img 
                     src={testimonial.avatar} 
                     alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
+                    className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-emerald-200"
                   />
                   <div>
                     <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
