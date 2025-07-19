@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Search, AlertTriangle, Info, Clock, Pill } from 'lucide-react';
+import { Search, AlertTriangle, Info, Clock, Pill, Shield, DollarSign } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 
 interface Medicine {
@@ -15,6 +15,7 @@ interface Medicine {
   price: string;
   manufacturer: string;
   image: string;
+  verified: boolean;
 }
 
 export const MedicineSection: React.FC = () => {
@@ -35,7 +36,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Liver disease', 'Alcohol dependence', 'Allergy to acetaminophen'],
       price: 'Rs. 5-15 per tablet',
       manufacturer: 'GlaxoSmithKline / Local manufacturers',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     },
     {
       id: '2',
@@ -49,7 +51,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Kidney disease', 'Heart disease', 'Stomach ulcers', 'Pregnancy (3rd trimester)'],
       price: 'Rs. 8-20 per tablet',
       manufacturer: 'Abbott / Searle',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683094/pexels-photo-3683094.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     },
     {
       id: '3',
@@ -63,7 +66,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Penicillin allergy', 'Mononucleosis', 'Severe kidney disease'],
       price: 'Rs. 15-30 per capsule',
       manufacturer: 'GlaxoSmithKline / Getz Pharma',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683056/pexels-photo-3683056.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     },
     {
       id: '4',
@@ -77,7 +81,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Severe liver disease', 'Allergy to omeprazole'],
       price: 'Rs. 25-50 per capsule',
       manufacturer: 'Novartis / Searle',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683089/pexels-photo-3683089.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     },
     {
       id: '5',
@@ -91,7 +96,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Kidney disease', 'Liver disease', 'Heart failure', 'Severe dehydration'],
       price: 'Rs. 10-25 per tablet',
       manufacturer: 'Merck / Sanofi',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683107/pexels-photo-3683107.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     },
     {
       id: '6',
@@ -105,7 +111,8 @@ export const MedicineSection: React.FC = () => {
       contraindications: ['Severe heart failure', 'Severe liver disease', 'Allergy to amlodipine'],
       price: 'Rs. 20-40 per tablet',
       manufacturer: 'Pfizer / Boehringer Ingelheim',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=400&h=300'
+      image: 'https://images.pexels.com/photos/3683098/pexels-photo-3683098.jpeg?auto=compress&cs=tinysrgb&w=400&h=300',
+      verified: true
     }
   ];
 
@@ -116,13 +123,23 @@ export const MedicineSection: React.FC = () => {
   );
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold text-gray-800 mb-4">
+    <div className="min-h-screen bg-gradient-to-br from-orange-50 via-white to-red-50 py-8 relative overflow-hidden">
+      {/* Background Elements */}
+      <div className="absolute inset-0 overflow-hidden">
+        <div className="absolute top-20 right-20 w-64 h-64 bg-gradient-to-br from-orange-400/10 to-red-400/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 left-20 w-64 h-64 bg-gradient-to-br from-pink-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-orange-100 to-red-100 rounded-2xl mb-6">
+            <Pill className="w-8 h-8 text-orange-600" />
+          </div>
+          <h1 className="text-4xl font-bold bg-gradient-to-r from-orange-600 to-red-600 bg-clip-text text-transparent mb-4">
             {t('medicines')}
           </h1>
-          <p className="text-gray-600 max-w-2xl mx-auto">
+          <p className="text-gray-600 max-w-2xl mx-auto text-lg">
             {t('medicinesDescription')}
           </p>
         </div>
@@ -130,58 +147,68 @@ export const MedicineSection: React.FC = () => {
         {/* Search */}
         <div className="max-w-md mx-auto mb-8">
           <div className="relative">
-            <Search className="absolute left-3 top-2.5 w-5 h-5 text-gray-400" />
+            <Search className="absolute left-4 top-3.5 w-5 h-5 text-gray-400" />
             <input
               type="text"
               placeholder={t('searchMedicines')}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-emerald-500"
+              className="w-full pl-12 pr-4 py-3 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-orange-500 bg-white/80 backdrop-blur-sm shadow-sm hover:shadow-md transition-all duration-300"
             />
           </div>
         </div>
 
         {/* Medicines Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredMedicines.map((medicine) => (
-            <div key={medicine.id} className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
-              <div className="relative h-40 overflow-hidden">
+            <div key={medicine.id} className="group bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20">
+              {/* Medicine Image Header */}
+              <div className="relative h-48 overflow-hidden">
                 <img 
                   src={medicine.image} 
                   alt={medicine.name}
-                  className="w-full h-full object-cover hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                <div className="absolute bottom-2 left-2">
-                  <div className="bg-white/90 backdrop-blur-sm p-2 rounded-lg">
-                    <Pill className="w-6 h-6 text-emerald-600" />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                
+                {/* Verification Badge */}
+                {medicine.verified && (
+                  <div className="absolute top-4 right-4 bg-green-500 text-white px-2 py-1 rounded-full text-xs font-medium flex items-center space-x-1">
+                    <Shield className="w-3 h-3" />
+                    <span>Verified</span>
                   </div>
-                </div>
-              </div>
-              <div className="p-6">
-                <div className="flex items-start justify-between mb-4">
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-gray-800 mb-1">{medicine.name}</h3>
-                    <p className="text-gray-600 text-sm mb-2">{medicine.genericName}</p>
-                    <span className="inline-block bg-emerald-100 text-emerald-700 px-2 py-1 rounded-full text-xs">
-                      {medicine.type}
-                    </span>
-                  </div>
+                )}
+
+                {/* Medicine Type Badge */}
+                <div className="absolute top-4 left-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                  <span className="text-xs font-medium text-gray-800">{medicine.type}</span>
                 </div>
 
+                {/* Medicine Info Overlay */}
+                <div className="absolute bottom-4 left-4 right-4">
+                  <h3 className="text-xl font-bold text-white mb-1">{medicine.name}</h3>
+                  <p className="text-orange-200 font-medium">{medicine.genericName}</p>
+                </div>
+              </div>
+
+              {/* Card Content */}
+              <div className="p-6">
                 <div className="mb-4">
-                  <h4 className="text-sm font-medium text-gray-700 mb-2">{t('commonUses')}</h4>
-                  <div className="flex flex-wrap gap-1">
+                  <h4 className="text-sm font-medium text-gray-700 mb-3 flex items-center space-x-2">
+                    <Pill className="w-4 h-4 text-orange-500" />
+                    <span>{t('commonUses')}</span>
+                  </h4>
+                  <div className="flex flex-wrap gap-2">
                     {medicine.uses.slice(0, 3).map((use) => (
                       <span
                         key={use}
-                        className="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded-full"
+                        className="px-3 py-1 bg-orange-100 text-orange-700 text-xs rounded-full font-medium"
                       >
                         {use}
                       </span>
                     ))}
                     {medicine.uses.length > 3 && (
-                      <span className="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded-full">
+                      <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs rounded-full font-medium">
                         +{medicine.uses.length - 3} more
                       </span>
                     )}
@@ -189,13 +216,23 @@ export const MedicineSection: React.FC = () => {
                 </div>
 
                 <div className="mb-4">
-                  <p className="text-sm text-gray-600 mb-1">{t('price')}</p>
-                  <p className="font-semibold text-gray-800">{medicine.price}</p>
+                  <div className="bg-gradient-to-br from-green-50 to-emerald-50 p-4 rounded-xl">
+                    <div className="flex items-center space-x-2 mb-1">
+                      <DollarSign className="w-4 h-4 text-green-600" />
+                      <p className="text-sm text-green-600 font-medium">{t('price')}</p>
+                    </div>
+                    <p className="text-lg font-bold text-green-700">{medicine.price}</p>
+                  </div>
+                </div>
+
+                <div className="mb-4">
+                  <p className="text-sm text-gray-600 mb-1">Manufacturer</p>
+                  <p className="text-sm font-medium text-gray-800">{medicine.manufacturer}</p>
                 </div>
 
                 <button
                   onClick={() => setSelectedMedicine(medicine)}
-                  className="w-full bg-emerald-600 text-white py-2 px-4 rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center space-x-2"
+                  className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-3 px-4 rounded-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 flex items-center justify-center space-x-2 font-medium shadow-lg hover:shadow-xl transform hover:-translate-y-0.5"
                 >
                   <Info className="w-4 h-4" />
                   <span>{t('getDetailedInfo')}</span>
@@ -206,89 +243,96 @@ export const MedicineSection: React.FC = () => {
         </div>
 
         {filteredMedicines.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-600 text-lg">
+          <div className="text-center py-16">
+            <div className="w-24 h-24 bg-gray-100 rounded-full flex items-center justify-center mx-auto mb-4">
+              <Pill className="w-12 h-12 text-gray-400" />
+            </div>
+            <p className="text-gray-600 text-lg font-medium">
               {t('noMedicinesFound')}
+            </p>
+            <p className="text-gray-500 text-sm mt-2">
+              Try searching with a different medicine name
             </p>
           </div>
         )}
 
         {/* Medicine Detail Modal */}
         {selectedMedicine && (
-          <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 p-4">
-            <div className="bg-white rounded-lg max-w-4xl w-full max-h-[90vh] overflow-y-auto">
+          <div className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4">
+            <div className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto shadow-2xl">
               <div className="p-6">
                 <div className="flex items-start justify-between mb-6">
                   <div>
-                    <h2 className="text-2xl font-bold text-gray-800">{selectedMedicine.name}</h2>
-                    <p className="text-gray-600">{selectedMedicine.genericName}</p>
-                    <span className="inline-block bg-emerald-100 text-emerald-700 px-3 py-1 rounded-full text-sm mt-2">
+                    <h2 className="text-3xl font-bold text-gray-800">{selectedMedicine.name}</h2>
+                    <p className="text-gray-600 text-lg">{selectedMedicine.genericName}</p>
+                    <span className="inline-block bg-orange-100 text-orange-700 px-3 py-1 rounded-full text-sm mt-2 font-medium">
                       {selectedMedicine.type}
                     </span>
                   </div>
                   <button
                     onClick={() => setSelectedMedicine(null)}
-                    className="text-gray-500 hover:text-gray-700 text-2xl"
+                    className="text-gray-500 hover:text-gray-700 text-3xl font-light"
                   >
                     ×
                   </button>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center space-x-2">
-                      <Pill className="w-5 h-5 text-emerald-600" />
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                      <Pill className="w-5 h-5 text-orange-600" />
                       <span>{t('uses')}</span>
                     </h3>
-                    <ul className="list-disc list-inside space-y-1 text-gray-600 mb-6">
+                    <ul className="list-disc list-inside space-y-2 text-gray-600 mb-6">
                       {selectedMedicine.uses.map((use, index) => (
                         <li key={index}>{use}</li>
                       ))}
                     </ul>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center space-x-2">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
                       <Clock className="w-5 h-5 text-blue-600" />
                       <span>{t('dosage')}</span>
                     </h3>
-                    <p className="text-gray-600 mb-6">{selectedMedicine.dosage}</p>
+                    <p className="text-gray-600 mb-6 bg-blue-50 p-4 rounded-xl">{selectedMedicine.dosage}</p>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4">
                       {t('manufacturer')}
                     </h3>
                     <p className="text-gray-600 mb-6">{selectedMedicine.manufacturer}</p>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3">
-                      {t('price')}
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
+                      <DollarSign className="w-5 h-5 text-green-600" />
+                      <span>{t('price')}</span>
                     </h3>
-                    <p className="text-gray-600 mb-6">{selectedMedicine.price}</p>
+                    <p className="text-gray-600 mb-6 bg-green-50 p-4 rounded-xl font-medium">{selectedMedicine.price}</p>
                   </div>
 
                   <div>
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center space-x-2">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
                       <AlertTriangle className="w-5 h-5 text-yellow-600" />
                       <span>{t('sideEffects')}</span>
                     </h3>
-                    <ul className="list-disc list-inside space-y-1 text-gray-600 mb-6">
+                    <ul className="list-disc list-inside space-y-2 text-gray-600 mb-6">
                       {selectedMedicine.sideEffects.map((effect, index) => (
                         <li key={index}>{effect}</li>
                       ))}
                     </ul>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center space-x-2">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
                       <Info className="w-5 h-5 text-blue-600" />
                       <span>{t('precautions')}</span>
                     </h3>
-                    <ul className="list-disc list-inside space-y-1 text-gray-600 mb-6">
+                    <ul className="list-disc list-inside space-y-2 text-gray-600 mb-6">
                       {selectedMedicine.precautions.map((precaution, index) => (
                         <li key={index}>{precaution}</li>
                       ))}
                     </ul>
 
-                    <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center space-x-2">
+                    <h3 className="text-lg font-semibold text-gray-800 mb-4 flex items-center space-x-2">
                       <AlertTriangle className="w-5 h-5 text-red-600" />
                       <span>{t('contraindications')}</span>
                     </h3>
-                    <ul className="list-disc list-inside space-y-1 text-gray-600">
+                    <ul className="list-disc list-inside space-y-2 text-gray-600">
                       {selectedMedicine.contraindications.map((contraindication, index) => (
                         <li key={index}>{contraindication}</li>
                       ))}
@@ -296,10 +340,15 @@ export const MedicineSection: React.FC = () => {
                   </div>
                 </div>
 
-                <div className="mt-6 p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                  <p className="text-sm text-yellow-800">
-                    <strong>{t('disclaimer')}:</strong> {t('medicineDisclaimer')}
-                  </p>
+                <div className="mt-8 p-6 bg-gradient-to-r from-yellow-50 to-orange-50 border border-yellow-200 rounded-2xl">
+                  <div className="flex items-start space-x-3">
+                    <AlertTriangle className="w-6 h-6 text-yellow-600 mt-1" />
+                    <div>
+                      <p className="text-sm text-yellow-800 leading-relaxed">
+                        <strong>{t('disclaimer')}:</strong> {t('medicineDisclaimer')}
+                      </p>
+                    </div>
+                  </div>
                 </div>
               </div>
             </div>

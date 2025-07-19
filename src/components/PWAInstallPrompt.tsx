@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Download, X, Smartphone, Zap } from 'lucide-react';
+import { Download, X, Smartphone, Zap, Shield, Clock } from 'lucide-react';
 
 interface BeforeInstallPromptEvent extends Event {
   prompt(): Promise<void>;
@@ -9,8 +9,13 @@ interface BeforeInstallPromptEvent extends Event {
 export const PWAInstallPrompt: React.FC = () => {
   const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null);
   const [showInstallPrompt, setShowInstallPrompt] = useState(false);
+  const [isIOS, setIsIOS] = useState(false);
 
   useEffect(() => {
+    // Check if it's iOS
+    const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+    setIsIOS(iOS);
+
     const handleBeforeInstallPrompt = (e: Event) => {
       e.preventDefault();
       setDeferredPrompt(e as BeforeInstallPromptEvent);
@@ -19,20 +24,30 @@ export const PWAInstallPrompt: React.FC = () => {
 
     window.addEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
 
+    // Show install prompt for iOS users after 3 seconds
+    if (iOS) {
+      const timer = setTimeout(() => {
+        setShowInstallPrompt(true);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+
     return () => {
       window.removeEventListener('beforeinstallprompt', handleBeforeInstallPrompt);
     };
   }, []);
 
   const handleInstallClick = async () => {
-    if (!deferredPrompt) return;
+    if (!deferredPrompt && !isIOS) return;
 
-    deferredPrompt.prompt();
-    const { outcome } = await deferredPrompt.userChoice;
-    
-    if (outcome === 'accepted') {
-      setDeferredPrompt(null);
-      setShowInstallPrompt(false);
+    if (deferredPrompt) {
+      deferredPrompt.prompt();
+      const { outcome } = await deferredPrompt.userChoice;
+      
+      if (outcome === 'accepted') {
+        setDeferredPrompt(null);
+        setShowInstallPrompt(false);
+      }
     }
   };
 
@@ -44,45 +59,95 @@ export const PWAInstallPrompt: React.FC = () => {
   if (!showInstallPrompt) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 z-50 animate-slideIn">
-      <div className="bg-gradient-to-r from-emerald-600 to-teal-600 rounded-2xl shadow-2xl p-4 text-white border border-emerald-500/20">
-        <div className="flex items-start space-x-3">
-          <div className="bg-white/20 p-2 rounded-xl">
-            <Smartphone className="w-6 h-6" />
-          </div>
-          <div className="flex-1">
-            <h3 className="font-bold text-lg mb-1">Install Health Assistant</h3>
-            <p className="text-emerald-100 text-sm mb-3">
-              Get instant access to AI health guidance. Install our app for offline access and faster performance.
-            </p>
-            <div className="flex items-center space-x-2 mb-3">
-              <div className="flex items-center space-x-1">
-                <Zap className="w-4 h-4 text-yellow-300" />
-                <span className="text-xs text-emerald-100">Offline Access</span>
+    <>
+      {/* Backdrop */}
+      <div className="fixed inset-0 bg-black/50 backdrop-blur-sm z-50 animate-fadeIn" onClick={handleDismiss}></div>
+      
+      {/* Install Prompt Modal */}
+      <div className="fixed inset-x-4 top-1/2 -translate-y-1/2 z-50 animate-slideIn">
+        <div className="bg-white rounded-3xl shadow-2xl overflow-hidden max-w-md mx-auto border border-emerald-100">
+          {/* Header with gradient */}
+          <div className="bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 p-6 text-white relative overflow-hidden">
+            <div className="absolute inset-0 bg-black/10"></div>
+            <div className="relative flex items-center space-x-4">
+              <div className="bg-white/20 p-3 rounded-2xl backdrop-blur-sm">
+                <Smartphone className="w-8 h-8" />
               </div>
-              <div className="flex items-center space-x-1">
-                <Zap className="w-4 h-4 text-yellow-300" />
-                <span className="text-xs text-emerald-100">Push Notifications</span>
+              <div>
+                <h3 className="text-xl font-bold">Install Health Assistant</h3>
+                <p className="text-emerald-100 text-sm">Get the full app experience</p>
               </div>
             </div>
-            <div className="flex space-x-2">
-              <button
-                onClick={handleInstallClick}
-                className="flex-1 bg-white text-emerald-600 px-4 py-2 rounded-xl font-medium hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center space-x-2"
-              >
-                <Download className="w-4 h-4" />
-                <span>Install App</span>
-              </button>
+          </div>
+
+          {/* Content */}
+          <div className="p-6">
+            <div className="text-center mb-6">
+              <div className="w-20 h-20 bg-gradient-to-br from-emerald-100 to-teal-100 rounded-2xl flex items-center justify-center mx-auto mb-4">
+                <Download className="w-10 h-10 text-emerald-600" />
+              </div>
+              <h4 className="text-lg font-semibold text-gray-800 mb-2">
+                Install our Health App
+              </h4>
+              <p className="text-gray-600 text-sm leading-relaxed">
+                Get instant access to AI health guidance, find doctors, and manage your health - all offline capable!
+              </p>
+            </div>
+
+            {/* Features */}
+            <div className="space-y-3 mb-6">
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-emerald-100 rounded-full flex items-center justify-center">
+                  <Zap className="w-4 h-4 text-emerald-600" />
+                </div>
+                <span className="text-sm text-gray-700">Instant AI health consultations</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-blue-100 rounded-full flex items-center justify-center">
+                  <Shield className="w-4 h-4 text-blue-600" />
+                </div>
+                <span className="text-sm text-gray-700">Offline access & secure data</span>
+              </div>
+              <div className="flex items-center space-x-3">
+                <div className="w-8 h-8 bg-purple-100 rounded-full flex items-center justify-center">
+                  <Clock className="w-4 h-4 text-purple-600" />
+                </div>
+                <span className="text-sm text-gray-700">24/7 health monitoring</span>
+              </div>
+            </div>
+
+            {/* Buttons */}
+            <div className="flex space-x-3">
+              {isIOS ? (
+                <div className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl text-center">
+                  <div className="text-sm font-medium">
+                    Tap <span className="inline-block mx-1">📤</span> then "Add to Home Screen"
+                  </div>
+                </div>
+              ) : (
+                <button
+                  onClick={handleInstallClick}
+                  className="flex-1 bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-6 py-3 rounded-xl font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl"
+                >
+                  <Download className="w-4 h-4" />
+                  <span>Install App</span>
+                </button>
+              )}
               <button
                 onClick={handleDismiss}
-                className="bg-white/20 text-white px-3 py-2 rounded-xl hover:bg-white/30 transition-all duration-300"
+                className="bg-gray-100 text-gray-600 px-4 py-3 rounded-xl hover:bg-gray-200 transition-all duration-300"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
+
+            {/* Bottom note */}
+            <p className="text-xs text-gray-500 text-center mt-4">
+              Free • No ads • Works offline
+            </p>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
