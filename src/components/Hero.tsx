@@ -1,5 +1,5 @@
 import React from 'react';
-import { MessageSquare, Users, Building2, Pill, FlaskConical, UserPlus, Shield, Clock, Globe, Sparkles, Zap, Award, TrendingUp, Phone } from 'lucide-react';
+import { MessageSquare, Users, Building2, Pill, FlaskConical, UserPlus, Shield, Clock, Globe, Sparkles, Zap, Award, TrendingUp, Phone, Brain, Heart, Activity, Stethoscope, Microscope, Ambulance } from 'lucide-react';
 import { useLanguage } from '../contexts/LanguageContext';
 import { Section } from '../App';
 
@@ -13,57 +13,63 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
   const features = [
     {
       icon: MessageSquare,
-      title: t('aiHealthAssistant'),
-      description: t('aiHealthAssistantDesc'),
+      title: 'AI Health Assistant',
+      description: 'Advanced AI powered by DeepSeek R1 for instant medical guidance and symptom analysis',
       action: () => onNavigate('chat'),
       color: 'bg-gradient-to-br from-emerald-100 to-teal-100 text-emerald-700',
       buttonColor: 'bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700',
-      image: 'https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/8376277/pexels-photo-8376277.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: 'AI Powered'
     },
     {
       icon: Users,
-      title: t('findDoctor'),
-      description: t('findDoctorDesc'),
+      title: 'Find Doctors',
+      description: 'Connect with verified doctors across Pakistan with instant booking and consultation',
       action: () => onNavigate('doctors'),
       color: 'bg-gradient-to-br from-blue-100 to-indigo-100 text-blue-700',
       buttonColor: 'bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700',
-      image: 'https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: 'Verified'
     },
     {
       icon: Building2,
-      title: t('hospitals'),
-      description: t('hospitalsDesc'),
+      title: 'Hospitals',
+      description: 'Locate top hospitals with specialties, emergency services, and real-time availability',
       action: () => onNavigate('hospitals'),
       color: 'bg-gradient-to-br from-purple-100 to-pink-100 text-purple-700',
       buttonColor: 'bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700',
-      image: 'https://images.pexels.com/photos/263402/pexels-photo-263402.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/668300/pexels-photo-668300.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: '24/7'
     },
     {
       icon: Pill,
-      title: t('medicines'),
-      description: t('medicinesDesc'),
+      title: 'Medicines',
+      description: 'Comprehensive medicine database with interactions, side effects, and availability',
       action: () => onNavigate('medicines'),
       color: 'bg-gradient-to-br from-orange-100 to-red-100 text-orange-700',
       buttonColor: 'bg-gradient-to-r from-orange-600 to-red-600 hover:from-orange-700 hover:to-red-700',
-      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/3683074/pexels-photo-3683074.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: 'Safe'
     },
     {
       icon: FlaskConical,
-      title: t('labs'),
-      description: t('labsDesc'),
+      title: 'Lab Tests',
+      description: 'Book diagnostic tests with home collection and digital reports delivery',
       action: () => onNavigate('labs'),
       color: 'bg-gradient-to-br from-pink-100 to-rose-100 text-pink-700',
       buttonColor: 'bg-gradient-to-r from-pink-600 to-rose-600 hover:from-pink-700 hover:to-rose-700',
-      image: 'https://images.pexels.com/photos/3786126/pexels-photo-3786126.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/3825527/pexels-photo-3825527.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: 'Digital'
     },
     {
       icon: UserPlus,
-      title: t('joinAsDoctor'),
-      description: t('joinAsDoctorDesc'),
+      title: 'Join as Doctor',
+      description: 'Register as a healthcare provider and expand your practice digitally',
       action: () => onNavigate('register'),
       color: 'bg-gradient-to-br from-teal-100 to-cyan-100 text-teal-700',
       buttonColor: 'bg-gradient-to-r from-teal-600 to-cyan-600 hover:from-teal-700 hover:to-cyan-700',
-      image: 'https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=600&h=400'
+      image: 'https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=600&h=400',
+      badge: 'Professional'
     }
   ];
 
@@ -79,35 +85,37 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="text-center mb-16">
           <div className="flex items-center justify-center mb-6">
-            <Sparkles className="w-8 h-8 text-emerald-500 animate-pulse mr-3" />
-            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent">
-              {t('heroTitle')}
+            <Brain className="w-12 h-12 text-emerald-500 animate-pulse mr-4" />
+            <h1 className="text-4xl md:text-6xl font-bold bg-gradient-to-r from-emerald-600 via-teal-600 to-blue-600 bg-clip-text text-transparent animate-shimmer">
+              HealthPK AI Platform
             </h1>
-            <Sparkles className="w-8 h-8 text-emerald-500 animate-pulse ml-3" />
+            <Heart className="w-12 h-12 text-red-500 animate-pulse ml-4" />
           </div>
           <div className="flex items-center justify-center space-x-2 mb-8">
-            <Award className="w-5 h-5 text-emerald-600" />
-            <span className="text-emerald-600 font-semibold">Pakistan's #1 AI Health Platform</span>
-            <Award className="w-5 h-5 text-emerald-600" />
+            <Shield className="w-6 h-6 text-emerald-600" />
+            <span className="text-emerald-600 font-bold text-lg">Pakistan's Most Advanced AI Health Platform</span>
+            <Stethoscope className="w-6 h-6 text-emerald-600" />
           </div>
-          <p className="text-xl text-gray-600 mb-8 max-w-3xl mx-auto">
-            {t('heroDescription')}
+          <p className="text-xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed">
+            Revolutionary AI-powered healthcare platform designed for Pakistan. Get instant medical guidance, 
+            connect with verified doctors, and access comprehensive health services - all in one intelligent platform.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <button
               onClick={() => onNavigate('chat')}
-              className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-8 py-4 rounded-xl font-medium hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-center space-x-2 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+              className="bg-gradient-to-r from-emerald-600 to-teal-600 text-white px-10 py-5 rounded-2xl font-bold hover:from-emerald-700 hover:to-teal-700 transition-all duration-300 flex items-center justify-center space-x-3 shadow-xl hover:shadow-2xl transform hover:-translate-y-2 text-lg animate-glow"
             >
-              <MessageSquare className="w-5 h-5" />
-              <Zap className="w-4 h-4 animate-pulse" />
-              <span>{t('startChat')}</span>
+              <Brain className="w-6 h-6" />
+              <Zap className="w-5 h-5 animate-pulse" />
+              <span>Start AI Chat</span>
+              <Sparkles className="w-5 h-5 animate-pulse" />
             </button>
             <button
               onClick={() => onNavigate('doctors')}
-              className="bg-white/80 backdrop-blur-sm text-emerald-600 border-2 border-emerald-600 px-8 py-4 rounded-xl font-medium hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center space-x-2 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+              className="bg-white/90 backdrop-blur-sm text-emerald-600 border-2 border-emerald-600 px-10 py-5 rounded-2xl font-bold hover:bg-emerald-50 transition-all duration-300 flex items-center justify-center space-x-3 shadow-lg hover:shadow-xl transform hover:-translate-y-2 text-lg"
             >
-              <Users className="w-5 h-5" />
-              <span>{t('findDoctor')}</span>
+              <Users className="w-6 h-6" />
+              <span>Find Doctors</span>
             </button>
           </div>
         </div>
@@ -119,181 +127,196 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
             return (
               <div
                 key={index}
-                className="group bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-6 hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-2 border border-white/20"
+                className="group bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-500 transform hover:-translate-y-3 border border-white/30 animate-fadeIn"
+                style={{ animationDelay: `${index * 0.1}s` }}
               >
-                <div className="relative mb-6 overflow-hidden rounded-xl">
+                <div className="relative h-56 overflow-hidden">
                   <img 
                     src={feature.image} 
                     alt={feature.title}
-                    className="w-full h-48 object-cover group-hover:scale-110 transition-transform duration-500"
+                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
-                  <div className={`absolute bottom-2 left-2 w-10 h-10 rounded-lg ${feature.color} flex items-center justify-center shadow-lg`}>
-                    <Icon className="w-5 h-5" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent"></div>
+                  
+                  {/* Badge */}
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                    <span className="text-xs font-bold text-gray-800">{feature.badge}</span>
+                  </div>
+                  
+                  {/* Icon */}
+                  <div className={`absolute bottom-4 left-4 w-12 h-12 rounded-xl ${feature.color} flex items-center justify-center shadow-lg border border-white/20`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  
+                  {/* Title Overlay */}
+                  <div className="absolute bottom-4 left-20 right-4">
+                    <h3 className="text-xl font-bold text-white">{feature.title}</h3>
                   </div>
                 </div>
-                <h3 className="text-xl font-bold text-gray-800 mb-3 group-hover:text-emerald-600 transition-colors">
-                  {feature.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {feature.description}
-                </p>
-                <button
-                  onClick={feature.action}
-                  className={`w-full ${feature.buttonColor} text-white py-3 rounded-xl font-medium transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-0.5 flex items-center justify-center space-x-2`}
-                >
-                  <Icon className="w-4 h-4" />
-                  <span>{t('getStarted')}</span>
-                  <Sparkles className="w-3 h-3 animate-pulse" />
-                </button>
+                
+                <div className="p-6">
+                  <p className="text-gray-600 mb-6 leading-relaxed text-sm">
+                    {feature.description}
+                  </p>
+                  <button
+                    onClick={feature.action}
+                    className={`w-full ${feature.buttonColor} text-white py-4 rounded-xl font-bold transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2`}
+                  >
+                    <Icon className="w-5 h-5" />
+                    <span>Get Started</span>
+                    <Sparkles className="w-4 h-4 animate-pulse" />
+                  </button>
+                </div>
               </div>
             );
           })}
         </div>
 
         {/* Stats Section */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-16 border border-white/20">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-16 border border-white/30 animate-fadeIn">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-4">
-              Trusted by Thousands Across Pakistan
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-4">
+              Revolutionizing Healthcare in Pakistan
             </h2>
-            <p className="text-gray-600">Real-time statistics from our platform</p>
+            <p className="text-gray-600 text-lg">Real-time impact and trusted by healthcare professionals</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
             <div className="text-center group">
-              <div className="bg-gradient-to-br from-emerald-100 to-teal-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Shield className="w-10 h-10 text-emerald-600" />
+              <div className="bg-gradient-to-br from-emerald-100 to-teal-100 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-float">
+                <Brain className="w-12 h-12 text-emerald-600" />
               </div>
-              <h4 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
-                24/7
-                <TrendingUp className="w-5 h-5 text-emerald-500 ml-2 animate-bounce" />
+              <h4 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center">
+                AI
+                <Activity className="w-6 h-6 text-emerald-500 ml-2 animate-pulse" />
               </h4>
-              <p className="text-gray-600 font-medium">{t('availableAlways')}</p>
+              <p className="text-gray-600 font-medium">Powered Intelligence</p>
             </div>
             <div className="text-center group">
-              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Clock className="w-10 h-10 text-blue-600" />
+              <div className="bg-gradient-to-br from-blue-100 to-indigo-100 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-float" style={{ animationDelay: '1s' }}>
+                <Clock className="w-12 h-12 text-blue-600" />
               </div>
-              <h4 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
-                &lt;2s
+              <h4 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center">
+                24/7
                 <Zap className="w-5 h-5 text-blue-500 ml-2 animate-pulse" />
               </h4>
-              <p className="text-gray-600 font-medium">{t('responseTime')}</p>
+              <p className="text-gray-600 font-medium">Available Always</p>
             </div>
             <div className="text-center group">
-              <div className="bg-gradient-to-br from-purple-100 to-pink-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Globe className="w-10 h-10 text-purple-600" />
+              <div className="bg-gradient-to-br from-purple-100 to-pink-100 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-float" style={{ animationDelay: '2s' }}>
+                <Shield className="w-12 h-12 text-purple-600" />
               </div>
-              <h4 className="text-3xl font-bold text-gray-800 mb-2">5+</h4>
-              <p className="text-gray-600 font-medium">{t('languages')}</p>
+              <h4 className="text-4xl font-bold text-gray-800 mb-2">100%</h4>
+              <p className="text-gray-600 font-medium">Secure & Private</p>
             </div>
             <div className="text-center group">
-              <div className="bg-gradient-to-br from-orange-100 to-red-100 w-20 h-20 rounded-2xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg">
-                <Users className="w-10 h-10 text-orange-600" />
+              <div className="bg-gradient-to-br from-orange-100 to-red-100 w-24 h-24 rounded-3xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform duration-300 shadow-lg animate-float" style={{ animationDelay: '3s' }}>
+                <Users className="w-12 h-12 text-orange-600" />
               </div>
-              <h4 className="text-3xl font-bold text-gray-800 mb-2 flex items-center justify-center">
-                10K+
+              <h4 className="text-4xl font-bold text-gray-800 mb-2 flex items-center justify-center">
+                50K+
                 <TrendingUp className="w-5 h-5 text-orange-500 ml-2 animate-bounce" />
               </h4>
-              <p className="text-gray-600 font-medium">Active Users</p>
+              <p className="text-gray-600 font-medium">Trusted Users</p>
             </div>
           </div>
         </div>
 
         {/* Features Showcase */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
-          <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-2xl p-8 text-white shadow-2xl">
+          <div className="bg-gradient-to-br from-emerald-600 to-teal-600 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden animate-fadeIn">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer"></div>
             <div className="flex items-center mb-6">
-              <div className="bg-white/20 p-3 rounded-xl mr-4">
-                <Zap className="w-8 h-8" />
+              <div className="bg-white/20 p-4 rounded-2xl mr-4 backdrop-blur-sm">
+                <Brain className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold">AI-Powered Diagnostics</h3>
+              <h3 className="text-3xl font-bold">DeepSeek AI Intelligence</h3>
             </div>
-            <p className="text-emerald-100 mb-6 leading-relaxed">
-              Our advanced AI analyzes symptoms and provides instant medical guidance, 
-              helping you understand your health concerns before visiting a doctor.
+            <p className="text-emerald-100 mb-6 leading-relaxed text-lg">
+              Powered by DeepSeek R1 Distill Llama 70B, our AI provides sophisticated medical analysis, 
+              symptom evaluation, and personalized health recommendations tailored for Pakistani healthcare needs.
             </p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                <span className="text-sm">Real-time Analysis</span>
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">Advanced AI Model</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <span className="text-sm">99% Accuracy</span>
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <span className="text-sm font-medium">Medical Expertise</span>
               </div>
             </div>
           </div>
           
-          <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-2xl p-8 text-white shadow-2xl">
+          <div className="bg-gradient-to-br from-blue-600 to-indigo-600 rounded-3xl p-8 text-white shadow-2xl relative overflow-hidden animate-fadeIn">
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent animate-shimmer" style={{ animationDelay: '1s' }}></div>
             <div className="flex items-center mb-6">
-              <div className="bg-white/20 p-3 rounded-xl mr-4">
-                <Shield className="w-8 h-8" />
+              <div className="bg-white/20 p-4 rounded-2xl mr-4 backdrop-blur-sm">
+                <Shield className="w-10 h-10" />
               </div>
-              <h3 className="text-2xl font-bold">Verified Healthcare Network</h3>
+              <h3 className="text-3xl font-bold">Verified Healthcare Network</h3>
             </div>
-            <p className="text-blue-100 mb-6 leading-relaxed">
-              Connect with verified doctors, hospitals, and labs across Pakistan. 
-              All healthcare providers are thoroughly vetted for your safety.
+            <p className="text-blue-100 mb-6 leading-relaxed text-lg">
+              Connect with PMC-verified doctors, accredited hospitals, and certified labs across Pakistan. 
+              Our comprehensive network ensures quality healthcare access in every province.
             </p>
             <div className="flex items-center space-x-4">
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
-                <span className="text-sm">PMC Verified</span>
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse"></div>
+                <span className="text-sm font-medium">PMC Verified</span>
               </div>
               <div className="flex items-center space-x-2">
-                <div className="w-2 h-2 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
-                <span className="text-sm">Secure Platform</span>
+                <div className="w-3 h-3 bg-white rounded-full animate-pulse" style={{ animationDelay: '0.5s' }}></div>
+                <span className="text-sm font-medium">Nationwide Coverage</span>
               </div>
             </div>
           </div>
         </div>
 
         {/* Testimonials */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-2xl shadow-xl p-8 mb-16 border border-white/20">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-xl p-8 mb-16 border border-white/30 animate-fadeIn">
           <div className="text-center mb-8">
-            <h2 className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-4">
-              What Our Users Say
+            <h2 className="text-4xl font-bold bg-gradient-to-r from-emerald-600 to-teal-600 bg-clip-text text-transparent mb-4">
+              Trusted by Healthcare Professionals
             </h2>
-            <p className="text-gray-600">Real feedback from people across Pakistan</p>
+            <p className="text-gray-600 text-lg">Real experiences from doctors and patients across Pakistan</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {[
               {
                 name: "Dr. Ahmed Hassan",
-                location: "Lahore",
-                text: "This platform has revolutionized how I connect with patients in remote areas. The AI assistant is incredibly accurate.",
-                avatar: "https://images.pexels.com/photos/5215024/pexels-photo-5215024.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+                location: "Cardiologist, Lahore",
+                text: "HealthPK AI has revolutionized patient care. The DeepSeek AI provides remarkably accurate preliminary assessments that help me prioritize urgent cases.",
+                avatar: "https://images.pexels.com/photos/5407206/pexels-photo-5407206.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               },
               {
-                name: "Fatima Khan",
-                location: "Karachi",
-                text: "As a mother in a remote village, this app has been a lifesaver. I can get medical advice instantly for my children.",
-                avatar: "https://images.pexels.com/photos/5452293/pexels-photo-5452293.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+                name: "Dr. Fatima Khan",
+                location: "Pediatrician, Karachi",
+                text: "The AI's understanding of Pakistani healthcare context is impressive. It provides culturally appropriate guidance while maintaining medical accuracy.",
+                avatar: "https://images.pexels.com/photos/6749778/pexels-photo-6749778.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               },
               {
-                name: "Muhammad Ali",
-                location: "Islamabad",
-                text: "The multilingual support makes it accessible to everyone. Finally, healthcare technology that understands Pakistan.",
-                avatar: "https://images.pexels.com/photos/5327580/pexels-photo-5327580.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
+                name: "Dr. Sana Malik",
+                location: "General Physician, Islamabad",
+                text: "This platform bridges the gap between patients and healthcare. The AI assistant helps patients make informed decisions about seeking medical care.",
+                avatar: "https://images.pexels.com/photos/5452201/pexels-photo-5452201.jpeg?auto=compress&cs=tinysrgb&w=150&h=150"
               }
             ].map((testimonial, index) => (
-              <div key={index} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300">
+              <div key={index} className="bg-gradient-to-br from-gray-50 to-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 animate-fadeIn" style={{ animationDelay: `${index * 0.2}s` }}>
                 <div className="flex items-center mb-4">
                   <img 
                     src={testimonial.avatar} 
                     alt={testimonial.name}
-                    className="w-16 h-16 rounded-full object-cover mr-4 border-2 border-emerald-200"
+                    className="w-16 h-16 rounded-full object-cover mr-4 border-3 border-emerald-200 shadow-lg"
                   />
                   <div>
-                    <h4 className="font-semibold text-gray-800">{testimonial.name}</h4>
-                    <p className="text-sm text-gray-600">{testimonial.location}</p>
+                    <h4 className="font-bold text-gray-800">{testimonial.name}</h4>
+                    <p className="text-sm text-emerald-600 font-medium">{testimonial.location}</p>
                   </div>
                 </div>
-                <p className="text-gray-700 italic">"{testimonial.text}"</p>
+                <p className="text-gray-700 italic leading-relaxed">"{testimonial.text}"</p>
                 <div className="flex text-yellow-400 mt-3">
                   {[...Array(5)].map((_, i) => (
-                    <span key={i}>★</span>
+                    <span key={i} className="text-lg">★</span>
                   ))}
                 </div>
               </div>
@@ -302,32 +325,33 @@ export const Hero: React.FC<HeroProps> = ({ onNavigate }) => {
         </div>
 
         {/* Emergency Section */}
-        <div className="bg-gradient-to-r from-red-500 to-red-600 border border-red-300 rounded-2xl p-8 text-center shadow-2xl">
+        <div className="bg-gradient-to-r from-red-500 to-red-600 border border-red-300 rounded-3xl p-8 text-center shadow-2xl relative overflow-hidden animate-fadeIn">
+          <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-shimmer"></div>
           <div className="flex items-center justify-center mb-4">
-            <div className="bg-white/20 p-3 rounded-xl mr-4">
-              <Phone className="w-8 h-8 text-white animate-pulse" />
+            <div className="bg-white/20 p-4 rounded-2xl mr-4 backdrop-blur-sm">
+              <Ambulance className="w-10 h-10 text-white animate-pulse" />
             </div>
-            <h3 className="text-2xl font-bold text-white">
-              {t('emergencyTitle')}
+            <h3 className="text-3xl font-bold text-white">
+              Medical Emergency?
             </h3>
           </div>
-          <p className="text-red-100 mb-6 text-lg">
-            {t('emergencyDescription')}
+          <p className="text-red-100 mb-6 text-xl leading-relaxed">
+            For life-threatening situations, call emergency services immediately. Every second counts in medical emergencies.
           </p>
           <div className="flex flex-col sm:flex-row justify-center gap-4">
             <a
               href="tel:1122"
-              className="bg-white text-red-600 px-8 py-4 rounded-xl font-bold hover:bg-red-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+              className="bg-white text-red-600 px-10 py-5 rounded-2xl font-bold hover:bg-red-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 flex items-center justify-center space-x-3 text-lg"
             >
-              <Phone className="w-5 h-5" />
-              <span>{t('call')} 1122 - {t('rescue')}</span>
+              <Phone className="w-6 h-6" />
+              <span>📞 1122 - Rescue Services</span>
             </a>
             <a
               href="tel:115"
-              className="bg-white text-red-600 px-8 py-4 rounded-xl font-bold hover:bg-red-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1 flex items-center justify-center space-x-2"
+              className="bg-white text-red-600 px-10 py-5 rounded-2xl font-bold hover:bg-red-50 transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-2 flex items-center justify-center space-x-3 text-lg"
             >
-              <Phone className="w-5 h-5" />
-              <span>{t('call')} 115 - {t('edhi')}</span>
+              <Phone className="w-6 h-6" />
+              <span>📞 115 - Edhi Ambulance</span>
             </a>
           </div>
         </div>
