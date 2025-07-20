@@ -53,6 +53,9 @@ export const ChatInterface: React.FC = () => {
     try {
       const aiResponse = await aiHealthService.sendMessage(inputText);
       
+      // Simulate typing delay for better UX
+      const typingDelay = Math.min(aiResponse.length * 20, 3000); // Max 3 seconds
+      
       setTimeout(() => {
         setIsTyping(false);
         const aiMessage: Message = {
@@ -63,7 +66,7 @@ export const ChatInterface: React.FC = () => {
         };
         setMessages(prev => [...prev, aiMessage]);
         setIsLoading(false);
-      }, 1500);
+      }, typingDelay);
     } catch (error) {
       setIsTyping(false);
       const errorMessage: Message = {
