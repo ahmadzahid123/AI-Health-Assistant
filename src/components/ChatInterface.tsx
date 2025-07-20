@@ -15,7 +15,7 @@ export const ChatInterface: React.FC = () => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: '1',
-      text: '🌟 **Assalam-o-Alaikum! Welcome to HealthPK AI** 🌟\n\nI am your advanced AI Health Assistant powered by **DeepSeek R1 Distill Llama 70B**, specifically designed for Pakistan\'s healthcare needs.\n\n**I can help you with:**\n• 🩺 Symptom analysis and health guidance\n• 💊 Medicine information and interactions\n• 🚑 Emergency and first aid guidance\n• 🏥 Finding doctors and healthcare facilities\n• 🧠 Mental health support\n• 👶 Child and maternal health advice\n\n**Emergency Numbers:**\n📞 **1122** - Rescue Services\n📞 **115** - Edhi Ambulance\n\nHow can I assist you with your health today?',
+      text: '🌟 **Assalam-o-Alaikum! Welcome to HealthPK AI** 🌟\n\nI am your advanced AI Health Assistant powered by **DeepSeek R1 Distill Llama 70B**, ready to answer ANY health question you have!\n\n**I can help you with EVERYTHING:**\n• 🩺 Any symptom analysis and health guidance\n• 💊 Complete medicine information and interactions\n• 🚑 Emergency and first aid guidance\n• 🏥 Finding doctors and healthcare facilities\n• 🧠 Mental health support and counseling\n• 👶 Child and maternal health advice\n• 🔬 Medical research and latest treatments\n• 🌿 Natural remedies and alternative medicine\n• 💪 Fitness and nutrition guidance\n• 🧬 Genetic conditions and rare diseases\n\n**Emergency Numbers:**\n📞 **1122** - Rescue Services\n📞 **115** - Edhi Ambulance\n\n**Ask me ANYTHING about health - I have access to comprehensive medical knowledge!**',
       isUser: false,
       timestamp: new Date()
     }
